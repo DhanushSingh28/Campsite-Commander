@@ -1,4 +1,5 @@
 Campsite Commander App ST10505975 dhanush singh
+
 Project Description:
 My code uses arrays and loops to file, calculate and organise the item that where obtained for camping trips.The code is divided by 3 kt activities. 
  
