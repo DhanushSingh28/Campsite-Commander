@@ -17,6 +17,7 @@ class splashscreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //I used a handler to get to the main page in the 3 sec
             Handler(mainLooper).postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

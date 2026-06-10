@@ -9,7 +9,10 @@ import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.content.Intent;
+import kotlin.reflect.KClass
 
+//ST10505975 Dhanush Singh
 data class Item(
     val name: String,
     val category: String,
@@ -28,20 +31,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val changeScreenButton = findViewById<Button>(R.id.detail_page)
+        changeScreenButton.setOnClickListener {
+            val intent = Intent(this,DetailedViewScreen::class.java)
 
+            startActivity(intent)
+        }
 
                 val tableLayout = findViewById<TableLayout>(R.id.tableLayoutItems)
                 val btnCalculate = findViewById<Button>(R.id.add_gear)
                 val tvTotalOutput = findViewById<TextView>(R.id.tvTotalOutput)
-
-                // Sample list of items
+//the loops were faster to implement here
                 val itemList = listOf(
                     Item("Tent", "Shelter", 1, "4-person waterproof"),
                     Item("Marshmallows", "Food", 3, "For S'mores(Mega size)"),
                     Item("Flashlight", "Safety", 2, "Check Batteries(AA)")
                 )
 
-                // 2. Loop through data to create table rows
                 for (item in itemList) {
                     val row = TableRow(this)
                     row.layoutParams = TableRow.LayoutParams(
@@ -66,16 +72,13 @@ class MainActivity : AppCompatActivity() {
                     tableLayout.addView(row)
                 }
 
-                // 3. Calculation loop activated by button
                 btnCalculate.setOnClickListener {
                     var totalQuantity = 0
 
-                    // Loop to calculate totals
                     for (item in itemList) {
                         totalQuantity += item.quantity
                     }
 
-                    // Display results
                     tvTotalOutput.text = "Total Quantity: $\$totalQuantity"
         }
     }
