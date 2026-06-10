@@ -1,0 +1,82 @@
+package com.example.myapplication
+
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import android.widget.Button
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
+
+data class Item(
+    val name: String,
+    val category: String,
+    val quantity: Int,
+    val comments: String
+)
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
+
+                val tableLayout = findViewById<TableLayout>(R.id.tableLayoutItems)
+                val btnCalculate = findViewById<Button>(R.id.add_gear)
+                val tvTotalOutput = findViewById<TextView>(R.id.tvTotalOutput)
+
+                // Sample list of items
+                val itemList = listOf(
+                    Item("Tent", "Shelter", 1, "4-person waterproof"),
+                    Item("Marshmallows", "Food", 3, "For S'mores(Mega size)"),
+                    Item("Flashlight", "Safety", 2, "Check Batteries(AA)")
+                )
+
+                // 2. Loop through data to create table rows
+                for (item in itemList) {
+                    val row = TableRow(this)
+                    row.layoutParams = TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.WRAP_CONTENT
+                    )
+
+                    val tvName = TextView(this).apply {
+                        text = item.name
+                        setPadding(16, 16, 16, 16)
+                        layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.0f)
+                    }
+
+                    val tvQty = TextView(this).apply {
+                        text = item.quantity.toString()
+                        setPadding(16, 16, 16, 16)
+                        layoutParams = TableRow.LayoutParams(40, TableRow.LayoutParams.WRAP_CONTENT)
+                    }
+
+                    row.addView(tvName)
+                    row.addView(tvQty)
+                    tableLayout.addView(row)
+                }
+
+                // 3. Calculation loop activated by button
+                btnCalculate.setOnClickListener {
+                    var totalQuantity = 0
+
+                    // Loop to calculate totals
+                    for (item in itemList) {
+                        totalQuantity += item.quantity
+                    }
+
+                    // Display results
+                    tvTotalOutput.text = "Total Quantity: $\$totalQuantity"
+        }
+    }
+}
