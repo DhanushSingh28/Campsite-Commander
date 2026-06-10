@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import android.view.Gravity
-import android.graphics.Color
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow

@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:stretchColumns="0,1,2,3">
 
-            <!-- Table Header -->
             <TableRow
                 android:background="#E0E0E0"
                 android:padding="8dp">
