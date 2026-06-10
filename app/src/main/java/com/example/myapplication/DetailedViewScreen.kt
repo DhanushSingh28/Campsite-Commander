@@ -30,13 +30,13 @@ class DetailedViewScreen : AppCompatActivity() {
             val btnShowData = findViewById<Button>(R.id.btnShowData)
             val tableLayout = findViewById<TableLayout>(R.id.tableLayoutItems)
 
-            // 2. Set button activation
+           
             btnShowData.setOnClickListener {
 
-                // Clear previous data to prevent duplicates
+                
                 tableLayout.removeViews(1, tableLayout.childCount - 1)
 
-                // 3. Loop through arrays and populate the graph
+                
                 for (i in itemNames.indices) {
                     val row = TableRow(this)
                     val rowParams = TableRow.LayoutParams(
@@ -46,26 +46,26 @@ class DetailedViewScreen : AppCompatActivity() {
                     row.layoutParams = rowParams
                     row.setPadding(8, 16, 8, 16)
 
-                    // Optional: Alternating row colors
+                    
                     if (i % 2 == 0) {
                         row.setBackgroundColor(Color.parseColor("#F9F9F9"))
                     }
 
-                    // Add Item Name
+                    
                     row.addView(createTextView(itemNames[i]))
-                    // Add Category
+                   
                     row.addView(createTextView(categories[i]))
-                    // Add Quantity
+                    
                     row.addView(createTextView(quantities[i]))
-                    // Add Comments
+                    
                     row.addView(createTextView(comments[i]))
 
-                    // Add row to table
+                    
                     tableLayout.addView(row)
                 }
             }
 
-            // Helper function to format text for the table cells
+            
             private fun createTextView(textValue: String): TextView {
                 return TextView(this).apply {
                     text = textValue
