@@ -23,7 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- Table Layout acting as the Graph/Grid -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +36,6 @@
             android:layout_height="wrap_content"
             android:stretchColumns="0,1,2,3">
 
-            <!-- Table Header -->
             <TableRow
                 android:background="#E0E0E0"
                 android:padding="8dp">
