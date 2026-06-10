@@ -34,14 +34,14 @@ class MainActivity : AppCompatActivity() {
                 val btnCalculate = findViewById<Button>(R.id.add_gear)
                 val tvTotalOutput = findViewById<TextView>(R.id.tvTotalOutput)
 
-                // Sample list of items
+                
                 val itemList = listOf(
                     Item("Tent", "Shelter", 1, "4-person waterproof"),
                     Item("Marshmallows", "Food", 3, "For S'mores(Mega size)"),
                     Item("Flashlight", "Safety", 2, "Check Batteries(AA)")
                 )
 
-                // 2. Loop through data to create table rows
+                
                 for (item in itemList) {
                     val row = TableRow(this)
                     row.layoutParams = TableRow.LayoutParams(
@@ -66,16 +66,16 @@ class MainActivity : AppCompatActivity() {
                     tableLayout.addView(row)
                 }
 
-                // 3. Calculation loop activated by button
+                
                 btnCalculate.setOnClickListener {
                     var totalQuantity = 0
 
-                    // Loop to calculate totals
+                    
                     for (item in itemList) {
                         totalQuantity += item.quantity
                     }
 
-                    // Display results
+                  
                     tvTotalOutput.text = "Total Quantity: $\$totalQuantity"
         }
     }
